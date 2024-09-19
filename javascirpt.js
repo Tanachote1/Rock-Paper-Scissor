@@ -3,13 +3,17 @@ let humanScore = 0
 let computerScore = 0
 let btns = document.querySelectorAll(".choices");
 
-function userSelect(){
-btns.forEach(button => {
-    button.addEventListener('click', (event) => {
-        console.log(button.value)
+function humanChoice(){
+    btns.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const btnsValue = button.value
+            console.log(btnsValue)
+            return btnsValue
     });
 });
 };
+
+humanChoice()
 
 // This input player choice
 //  function humanChoice(){
@@ -17,6 +21,7 @@ btns.forEach(button => {
 //      return choice
 //  };
 //This random choice
+
 function getComputer(){
     const c_choice = Math.floor(Math.random() * 3) +1;
     if ( c_choice == 1){
@@ -28,7 +33,7 @@ function getComputer(){
     }
 }
 // This is logic for winner & loser
-function playRound(userSelect,getComputer){
+function playRound(humanChoice,getComputer){
     if (humanChoice === "rock" && getComputer === "scissor"){
         console.log("You win!! Rock beat Scissor")
         humanScore++;
@@ -44,7 +49,7 @@ function playRound(userSelect,getComputer){
         console.log("LOSE!")
         computerScore++;
     }
-    }
+    };
     
 //This start game   
 function playGame (){
@@ -73,6 +78,4 @@ function playGame (){
             console.log("Opponent score: " + computerScore)
         }
     }
-    
-
 
