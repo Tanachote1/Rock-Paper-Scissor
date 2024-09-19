@@ -1,12 +1,21 @@
 
 let humanScore = 0
 let computerScore = 0
+let btns = document.querySelectorAll(".choices");
 
-//This input player choice
-function humanChoice(){
-    const choice = prompt("Enter Rock, Paper, Scissor").toLowerCase()
-    return choice
-}
+function userSelect(){
+btns.forEach(button => {
+    button.addEventListener('click', (event) => {
+        console.log(button.value)
+    });
+});
+};
+
+// This input player choice
+//  function humanChoice(){
+//      const choice = prompt("Enter Rock, Paper, Scissor").toLowerCase()
+//      return choice
+//  };
 //This random choice
 function getComputer(){
     const c_choice = Math.floor(Math.random() * 3) +1;
@@ -19,7 +28,7 @@ function getComputer(){
     }
 }
 // This is logic for winner & loser
-function playRound(humanChoice,getComputer){
+function playRound(userSelect,getComputer){
     if (humanChoice === "rock" && getComputer === "scissor"){
         console.log("You win!! Rock beat Scissor")
         humanScore++;
@@ -37,7 +46,7 @@ function playRound(humanChoice,getComputer){
     }
     }
     
- //This is Game start   
+//This start game   
 function playGame (){
 
     const round = 5 
@@ -65,4 +74,5 @@ function playGame (){
         }
     }
     
+
 
