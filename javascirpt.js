@@ -2,11 +2,12 @@
 let humanScore = 0
 let computerScore = 0
 
+//This input player choice
 function humanChoice(){
     const choice = prompt("Enter Rock, Paper, Scissor").toLowerCase()
     return choice
 }
-
+//This random choice
 function getComputer(){
     const c_choice = Math.floor(Math.random() * 3) +1;
     if ( c_choice == 1){
@@ -17,7 +18,7 @@ function getComputer(){
         return "scissor"
     }
 }
-
+// This is logic for winner & loser
 function playRound(humanChoice,getComputer){
     if (humanChoice === "rock" && getComputer === "scissor"){
         console.log("You win!! Rock beat Scissor")
@@ -36,7 +37,7 @@ function playRound(humanChoice,getComputer){
     }
     }
     
-    
+ //This is Game start   
 function playGame (){
 
     const round = 5 
@@ -64,6 +65,4 @@ function playGame (){
         }
     }
     
-playGame();
-
 
