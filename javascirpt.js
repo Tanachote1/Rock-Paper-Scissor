@@ -3,6 +3,17 @@ let humanScore = 0;
 let computerScore = 0;
 let btns = document.querySelectorAll(".choices");
 
+btns.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const btnsValue = button.value;
+        const player_display = document.querySelector("#player");
+        const display = document.createElement("h1")
+        display.textContent = btnsValue;
+        player_display.appendChild(display)
+    });
+});
+
+//This is player input
 function humanChoice(){
     return new Promise((resolve) => {
     btns.forEach(button => {
@@ -24,12 +35,23 @@ function humanChoice(){
 
 function getComputer(){
     const c_choice = Math.floor(Math.random() * 3) +1;
+    const bot_display = document.querySelector("#bot")
+    const display = document.createElement("h1")
     if ( c_choice == 1){
+        display.textContent = "Rock";
+        display.style.color = "white";
+        bot_display.appendChild(display)
         return "rock";
     } else if ( c_choice == 2){
+        display.textContent = "Paper";
+        display.style.color = "white";
+        bot_display.appendChild(display)
         return "paper";
     } else {
-        return "scissor";
+        display.textContent = "Scissors";
+        display.style.color = "white";
+        bot_display.appendChild(display)
+        return "scissors";
     }
 };
 
@@ -37,14 +59,14 @@ function getComputer(){
 async function playRound(){
     let botSelect = getComputer();
     let playerChoice = await humanChoice();
-    if (playerChoice === "rock" && botSelect === "scissor"){
-        console.log("You win!! Rock beat Scissor")
+    if (playerChoice === "rock" && botSelect === "scissors"){
+        console.log("You win!! Rock beat Scissors")
         humanScore++;
     } else if (playerChoice === "paper" && botSelect === "rock") {
         console.log("You win!! Paper beat Rock")
         humanScore++;
     } else if (playerChoice === "scissors" && botSelect ==="paper"){
-        console.log("You win!! Scissor beat paper")
+        console.log("You win!! Scissors beat paper")
         humanScore++;
     } else if (playerChoice === botSelect){
         console.log("TIE!")
@@ -82,3 +104,4 @@ async function playGame (){
     }
 
 playGame()
+
