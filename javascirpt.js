@@ -1,19 +1,19 @@
 
-let humanScore = 0
-let computerScore = 0
+let humanScore = 0;
+let computerScore = 0;
 let btns = document.querySelectorAll(".choices");
 
 function humanChoice(){
+    return new Promise((resolve) => {
     btns.forEach(button => {
         button.addEventListener('click', (event) => {
-            const btnsValue = button.value
-            console.log(btnsValue)
-            return btnsValue
+            const btnsValue = button.value;
+            console.log(btnsValue);
+            resolve(btnsValue);
+            });
+        });
     });
-});
 };
-
-humanChoice()
 
 // This input player choice
 //  function humanChoice(){
@@ -25,32 +25,36 @@ humanChoice()
 function getComputer(){
     const c_choice = Math.floor(Math.random() * 3) +1;
     if ( c_choice == 1){
-        return "rock"
+        return "rock";
     } else if ( c_choice == 2){
-        return "paper"
+        return "paper";
     } else {
-        return "scissor"
+        return "scissor";
     }
-}
+};
+
 // This is logic for winner & loser
-function playRound(humanChoice,getComputer){
-    if (humanChoice === "rock" && getComputer === "scissor"){
+async function playRound(){
+    let botSelect = getComputer();
+    console.log(botSelect)
+    let playerChoice = await humanChoice();
+    if (playerChoice === "rock" && botSelect === "scissor"){
         console.log("You win!! Rock beat Scissor")
         humanScore++;
-    } else if (humanChoice === "paper" && getComputer === "rock") {
+    } else if (playerChoice === "paper" && botSelect === "rock") {
         console.log("You win!! Paper beat Rock")
         humanScore++;
-    } else if (humanChoice === "scissor" && getComputer ==="paper"){
+    } else if (playerChoice === "scissors" && botSelect ==="paper"){
         console.log("You win!! Scissor beat paper")
         humanScore++;
-    } else if (humanChoice === getComputer){
+    } else if (playerChoice === botSelect){
         console.log("TIE!")
     } else{
         console.log("LOSE!")
         computerScore++;
     }
     };
-    
+
 //This start game   
 function playGame (){
 
@@ -79,3 +83,8 @@ function playGame (){
         }
     }
 
+function start(){
+    playRound()
+}
+
+start()
