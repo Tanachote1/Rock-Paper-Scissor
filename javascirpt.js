@@ -3,6 +3,7 @@ let humanScore = 0;
 let computerScore = 0;
 let btns = document.querySelectorAll(".choices");
 
+
 btns.forEach(button => {
     button.addEventListener('click', (event) => {
         const btnsValue = button.value;
@@ -38,17 +39,17 @@ function getComputer(){
     const bot_display = document.querySelector("#bot")
     const display = document.createElement("h1")
     if ( c_choice == 1){
-        display.textContent = "Rock";
+        display.textContent = "rock";
         display.style.color = "white";
         bot_display.appendChild(display)
         return "rock";
     } else if ( c_choice == 2){
-        display.textContent = "Paper";
+        display.textContent = "paper";
         display.style.color = "white";
         bot_display.appendChild(display)
         return "paper";
     } else {
-        display.textContent = "Scissors";
+        display.textContent = "scissors";
         display.style.color = "white";
         bot_display.appendChild(display)
         return "scissors";
@@ -57,8 +58,8 @@ function getComputer(){
 
 // This is logic for winner & loser
 async function playRound(){
-    let botSelect = getComputer();
     let playerChoice = await humanChoice();
+    let botSelect = getComputer();
     if (playerChoice === "rock" && botSelect === "scissors"){
         console.log("You win!! Rock beat Scissors")
         humanScore++;
@@ -89,17 +90,44 @@ async function playGame (){
         }
         console.log("Result")
         if (humanScore === computerScore){
-            console.log("TIE")
-            console.log("Your score: " + humanScore)
-            console.log("Opponent score: " + computerScore)
+            // console.log("TIE")
+            // console.log("Your score: " + humanScore)
+            // console.log("Opponent score: " + computerScore)
+            const result_bot = document.querySelector("#bot_result")
+            const bot_display_result = document.createElement("h3")
+            bot_display_result.textContent = "TIE!"
+            result_bot.appendChild(bot_display_result)
+            const result = document.querySelector("#player_result")
+            const display_result = document.createElement("h3")
+            display_result.textContent = "TIE!"
+            result.appendChild(display_result)
+            bot_display_result.style.color = "white";
         } else if (humanScore > computerScore) {
-            console.log("You win!")
-            console.log("Your score: " + humanScore)
-            console.log("Opponent score: " + computerScore)
+            // console.log("You win!")
+            // console.log("Your score: " + humanScore)
+            // console.log("Opponent score: " + computerScore)
+            const result_bot = document.querySelector("#bot_result")
+            const bot_display_result = document.createElement("h3")
+            bot_display_result.textContent = "LOSE!"
+            result_bot.appendChild(bot_display_result)
+            const result = document.querySelector("#player_result")
+            const display_result = document.createElement("h3")
+            display_result.textContent = "WIN!"
+            result.appendChild(display_result)
+            bot_display_result.style.color = "white";
         } else {
-            console.log("You lose...")
-            console.log("Your score: " + humanScore)
-            console.log("Opponent score: " + computerScore)
+            // console.log("You lose...")
+            // console.log("Your score: " + humanScore)
+            // console.log("Opponent score: " + computerScore)
+            const result_bot = document.querySelector("#bot_result")
+            const bot_display_result = document.createElement("h3")
+            bot_display_result.textContent = "WIN!"
+            result_bot.appendChild(bot_display_result)
+            const result = document.querySelector("#player_result")
+            const display_result = document.createElement("h3")
+            display_result.textContent = "Lose!"
+            result.appendChild(display_result)
+            bot_display_result.style.color = "white";
         }
     }
 
