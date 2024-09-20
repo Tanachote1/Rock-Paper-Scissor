@@ -36,7 +36,6 @@ function getComputer(){
 // This is logic for winner & loser
 async function playRound(){
     let botSelect = getComputer();
-    console.log(botSelect)
     let playerChoice = await humanChoice();
     if (playerChoice === "rock" && botSelect === "scissor"){
         console.log("You win!! Rock beat Scissor")
@@ -56,16 +55,15 @@ async function playRound(){
     };
 
 //This start game   
-function playGame (){
-
+async function playGame (){
     const round = 5 
     for (let i = 1; i <= round; i++){
-        const humanSelection = humanChoice();
+        //const humanSelection = humanChoice();
         //console.log(humanSelection)
-        const computerSelection = getComputer();
+        //const computerSelection = getComputer();
         //console.log(computerSelection)
         // if call function without () it will be the same data
-        playRound(humanSelection,computerSelection)
+        await playRound()
         }
         console.log("Result")
         if (humanScore === computerScore){
@@ -83,8 +81,4 @@ function playGame (){
         }
     }
 
-function start(){
-    playRound()
-}
-
-start()
+playGame()
